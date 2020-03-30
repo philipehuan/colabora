@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY ='*&vj=!d!%+&32pzjl9_eez0vgt6=4%#!d10^^-3v!hrw5*tk81'
+SECRET_KEY =config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['colabora.herokuapp.com']
 
 
 # Application definition
@@ -86,19 +86,10 @@ WSGI_APPLICATION = 'Colabora.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'philipe_adm@ap1',
-        'PASSWORD': 'Trombontier1',
-        'HOST': 'ap1.postgres.database.azure.com',
-        'PORT': '5432',
-        'OPTIONS': {
-            'options': '-c search_path=colabora'
-        },
-    }
-}
+from dj_database_url import parse as dburl
+default_dburl = {'sqlite:///'+os.path.join(BASE_DIR,'db.sqlite3')}
+
+DATABASES = {'default': config('DATABASE_URL', default=default_dburl, cast= dburl),}
 
 
 # Password validation
