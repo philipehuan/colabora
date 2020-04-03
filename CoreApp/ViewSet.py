@@ -3,17 +3,18 @@ from rest_framework.viewsets import ModelViewSet
 
 from .Serializers import *
 from .models import *
-
+from .pagination import StandardPagination
 
 class ColaboradorViewSet(ModelViewSet):
     queryset = Colaborador.objects.all()
     serializer_class = ColaboradorSerializer
 
 
+
 class DepartamentoViewSet(ModelViewSet):
     queryset = Departamento.objects.all()
     serializer_class = DepartamentoSerializer
-
+    pagination_class = StandardPagination
 
 class FormacaoViewSet(ModelViewSet):
     queryset = Formacao.objects.all()
