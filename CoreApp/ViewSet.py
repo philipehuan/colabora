@@ -14,7 +14,7 @@ class ColaboradorViewSet(ModelViewSet):
 class DepartamentoViewSet(ModelViewSet):
     queryset = Departamento.objects.all()
     serializer_class = DepartamentoSerializer
-    #pagination_class = StandardPagination
+    pagination_class = StandardPagination
 
 class FormacaoViewSet(ModelViewSet):
     queryset = Formacao.objects.all()
