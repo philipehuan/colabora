@@ -25,6 +25,9 @@ class Colaborador(models.Model):
         managed = False
         db_table = 'colaborador'
 
+    def __str__(self):
+        return self.nome
+
 
 class Departamento(models.Model):
     nomedepartamento = models.CharField(max_length=50)
@@ -32,6 +35,9 @@ class Departamento(models.Model):
     class Meta:
         managed = False
         db_table = 'departamento'
+
+    def __str__(self):
+        return self.nomedepartamento
 
 
 class Formacao(models.Model):
@@ -56,3 +62,6 @@ class Funcao(models.Model):
         managed = False
         db_table = 'funcao'
         unique_together = (('id', 'departamento'),)
+
+    def __str__(self):
+        return self.nomefuncao
