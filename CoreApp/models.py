@@ -36,6 +36,9 @@ class Departamento(models.Model):
         managed = False
         db_table = 'departamento'
 
+    def return_Nome(self):
+        return self.nomedepartamento
+
     def __str__(self):
         return self.nomedepartamento
 
@@ -56,7 +59,7 @@ class Formacao(models.Model):
 
 class Funcao(models.Model):
     nomefuncao = models.CharField(max_length=20)
-    departamento = models.ForeignKey(Departamento, models.DO_NOTHING, db_column='departamento')
+    departamento = models.ForeignKey(Departamento, models.DO_NOTHING, db_column='departamento', related_name='deps')
 
     class Meta:
         managed = False

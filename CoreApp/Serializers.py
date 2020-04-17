@@ -1,4 +1,5 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework import serializers
+from rest_framework.serializers import ModelSerializer, Serializer
 
 from .models import *
 
@@ -22,6 +23,7 @@ class FormacaoSerializer(ModelSerializer):
 
 
 class FuncaoSerializer(ModelSerializer):
+    nomedepartamento = serializers.CharField(source='departamento.nomedepartamento', read_only=True)
     class Meta:
         model = Funcao
-        fields = '__all__'
+        fields = ['id', 'nomefuncao', 'departamento', 'nomedepartamento']
