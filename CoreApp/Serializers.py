@@ -3,7 +3,6 @@ from rest_framework.serializers import ModelSerializer, Serializer
 
 from .models import *
 
-
 class ColaboradorSerializer(ModelSerializer):
     class Meta:
         model = Colaborador
@@ -27,3 +26,13 @@ class FuncaoSerializer(ModelSerializer):
     class Meta:
         model = Funcao
         fields = ['id', 'nomefuncao', 'departamento', 'nomedepartamento']
+
+
+class SimpleFuncaoSerializer(ModelSerializer):
+    nomedepartamento = serializers.CharField(source='departamento.nomedepartamento', read_only=True)
+    id_departamento = serializers.IntegerField(source='departamento.id', read_only=True)
+
+    class Meta:
+        model = Funcao
+        fields = ['nomefuncao', 'id_departamento','nomedepartamento']
+

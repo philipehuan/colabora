@@ -1,14 +1,21 @@
 # Create your views here.
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet, ViewSet
 
 from .Serializers import *
 from .models import *
 # from .pagination import StandardPagination
 
+class Colaborador_get_info(ViewSet):
+    def list(self, request):
+        queryset = Funcao.objects.all()
+        serializer = SimpleFuncaoSerializer(queryset, many= True)
+        return Response(serializer.data)
+
 class ColaboradorViewSet(ModelViewSet):
     queryset = Colaborador.objects.all()
     serializer_class = ColaboradorSerializer
-
 
 
 class DepartamentoViewSet(ModelViewSet):
