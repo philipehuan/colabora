@@ -4,9 +4,11 @@ from rest_framework.serializers import ModelSerializer, Serializer
 from .models import *
 
 class ColaboradorSerializer(ModelSerializer):
+    nome_departamento = serializers.CharField(source='departamento.nomedepartamento', read_only=True)
+    nome_funcao = serializers.CharField(source='funcao.nomefuncao', read_only=True)
     class Meta:
         model = Colaborador
-        fields = '__all__'
+        fields = ['id','nome', 'nascimento', 'rg', 'cpf', 'telefone', 'cnh', 'cnh_tipo','sexo', 'departamento','nome_departamento', 'funcao','nome_funcao']
 
 
 class DepartamentoSerializer(ModelSerializer):

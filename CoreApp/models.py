@@ -18,7 +18,7 @@ class Colaborador(models.Model):
     cnh_tipo = models.CharField(max_length=10, blank=True, null=True)
     sexo = models.CharField(max_length=1)
     departamento = models.ForeignKey('Departamento', models.DO_NOTHING, db_column='departamento')
-    funcao = models.CharField(max_length=20)
+    funcao = models.ForeignKey('Funcao', models.DO_NOTHING, db_column='funcao')
     foto_colaborador = models.BinaryField(blank=True, null=True)
 
     class Meta:

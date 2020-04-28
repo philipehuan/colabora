@@ -13,7 +13,6 @@ router.register('colabora/coreapp/colaborador', ColaboradorViewSet)
 router.register('colabora/coreapp/departamento',DepartamentoViewSet)
 router.register('colabora/coreapp/formacao', FormacaoViewSet)
 router.register('colabora/coreapp/funcao', FuncaoViewSet)
-router.register('colabora/coreapp/set_colaborador_get_info', Colaborador_get_info, basename='colaborador_get_info')
 
 
 urlpatterns = [
