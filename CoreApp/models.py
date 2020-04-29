@@ -22,7 +22,7 @@ class Colaborador(models.Model):
     foto_colaborador = models.BinaryField(blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'colaborador'
 
     def __str__(self):
@@ -33,7 +33,7 @@ class Departamento(models.Model):
     nomedepartamento = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'departamento'
 
     def return_Nome(self):
@@ -52,7 +52,7 @@ class Formacao(models.Model):
     dt_fim = models.DateField()
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'formacao'
         unique_together = (('id', 'colaborador'),)
 
@@ -62,7 +62,7 @@ class Funcao(models.Model):
     departamento = models.ForeignKey(Departamento, models.DO_NOTHING, db_column='departamento', related_name='deps')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'funcao'
         unique_together = (('id', 'departamento'),)
 

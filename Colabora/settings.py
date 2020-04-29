@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY =config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
-
-ALLOWED_HOSTS = ['colaborate.herokuapp.com']
+#DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG=True
+ALLOWED_HOSTS = ['colaborate.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -92,10 +92,19 @@ WSGI_APPLICATION = 'Colabora.wsgi.application'
 
 
 from dj_database_url import parse as dburl
-default_dburl = {'sqlite:///'+os.path.join(BASE_DIR,'db.sqlite3')}
+#default_dburl = {'sqlite:///'+os.path.join(BASE_DIR,'db.sqlite3')}
 
-DATABASES = {'default': config('DATABASE_URL', default=default_dburl, cast= dburl),}
-
+# DATABASES = {'default': config('DATABASE_URL', default=default_dburl, cast= dburl),}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'huan1000',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 
 
 # Password validation
