@@ -59,10 +59,9 @@ REST_FRAMEWORK = {
 
 #CORS_ORIGIN_WHITELIST = 'https://localhost:3000'
 CORS_ORIGIN_WHITELIST = [
-    "https://example.com",
-    "https://sub.example.com",
     "http://localhost:3000",
-    "http://127.0.0.1:9000"
+    "http://127.0.0.1:9000",
+    "https://priceless-bartik-b88f39.netlify.app"
 ]
 
 ROOT_URLCONF = 'Colabora.urls'
