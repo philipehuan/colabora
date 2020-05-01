@@ -8,7 +8,7 @@ from CoreApp.ViewSet import FormacaoViewSet
 from CoreApp.ViewSet import FuncaoViewSet
 
 
-router = DefaultRouter()
+router = DefaultRouter(trailing_slash=False)
 router.register('colabora/coreapp/colaborador', ColaboradorViewSet)
 router.register('colabora/coreapp/departamento',DepartamentoViewSet)
 router.register('colabora/coreapp/formacao', FormacaoViewSet)
