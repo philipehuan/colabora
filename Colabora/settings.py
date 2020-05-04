@@ -54,7 +54,8 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'DATE_FORMAT': "%d-%m-%Y",
+'DATE_FORMAT': "%d-%m-%Y",
+'DATE_INPUT_FORMATS':["%d-%m-%Y"],
 }
 
 #CORS_ORIGIN_WHITELIST = 'https://localhost:3000'
